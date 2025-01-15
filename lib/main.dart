@@ -5,8 +5,9 @@ import 'package:flutter_application_1/providers/localization.dart';
 import 'package:flutter_application_1/screens/guest/welcome_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-// import 'firebase_options.dart';
 
+// import 'firebase_options.dart';
+//here we import the
 void main() {
   // WidgetsFlutterBinding.ensureInitialized();
   // try {
