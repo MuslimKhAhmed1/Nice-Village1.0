@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Localization/app_localizations.dart';
-import 'package:flutter_application_1/config/themes.dart';
+import 'package:flutter_application_1/providers/themes.dart';
 import 'package:flutter_application_1/providers/localization.dart';
 import 'package:flutter_application_1/screens/guest/welcome_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'screens/guest/SplashScreen.dart';
+
 // import 'firebase_options.dart';
 //here we import the
+
 void main() {
   // WidgetsFlutterBinding.ensureInitialized();
   // try {
@@ -57,7 +60,7 @@ class MyApp extends StatelessWidget {
             GlobalCupertinoLocalizations.delegate,
           ],
           locale: Provider.of<LocaleProvider>(context).locale,
-          home: const WelcomeScreen(),
+          home: const SplashScreen(),
         );
       },
     );

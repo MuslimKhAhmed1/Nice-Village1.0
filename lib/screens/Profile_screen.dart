@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Localization/app_localizations.dart';
-import 'package:flutter_application_1/config/themes.dart';
+import 'package:flutter_application_1/providers/themes.dart';
 import 'package:flutter_application_1/providers/localization.dart';
+import 'package:flutter_application_1/screens/changePasswordScreen.dart';
 import 'package:provider/provider.dart';
-
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -87,7 +87,11 @@ class ProfilePage extends StatelessWidget {
                     context,
                     'change_password',
                     Icons.lock_outline,
-                    onTap: () {},
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) => const ChangePasswordScreen()),
+                    ),
                   ),
                   _buildMenuItem(
                     context,

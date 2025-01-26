@@ -46,15 +46,29 @@ class WelcomeScreen extends StatelessWidget {
                         ),
                     textAlign: TextAlign.center,
                   ),
-                  Text(
-                    AppLocalizations.of(context)?.translate('village_name') ??
-                        'Nice Village',
-                    style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                          color: Colors.white,
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                        ),
-                    textAlign: TextAlign.center,
+                  Center(
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: 'Nice ',
+                            style: TextStyle(
+                              color: Theme.of(context).primaryColor,
+                              fontSize: 32,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          TextSpan(
+                            text: 'Village',
+                            style: TextStyle(
+                              color: const Color.fromARGB(255, 77, 123, 230),
+                              fontSize: 32,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                   const Spacer(),
                   ElevatedButton(
@@ -76,7 +90,7 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                     child: Text(
                       AppLocalizations.of(context)?.translate('login') ??
-                          'Log in',
+                          'Login1',
                       style: const TextStyle(fontSize: 18),
                     ),
                   ),
@@ -100,7 +114,7 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                     child: Text(
                       AppLocalizations.of(context)?.translate('guest') ??
-                          'Guest',
+                          'guest',
                       style: const TextStyle(fontSize: 18),
                     ),
                   ),

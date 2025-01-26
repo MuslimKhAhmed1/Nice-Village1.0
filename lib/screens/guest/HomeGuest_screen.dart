@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_application_1/screens/guest/DetailInfoGuest_screen.dart';
+import 'package:flutter_application_1/screens/login_screen.dart';
 import 'package:flutter_application_1/screens/settings_screen.dart';
 import '../../localization/app_localizations.dart';
+import '../HomePageMain_screen.dart';
 
 class HomeGuestScreen extends StatelessWidget {
   const HomeGuestScreen({Key? key}) : super(key: key);
@@ -51,11 +53,10 @@ class HomeGuestScreen extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        // TODO: Implement login
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SettingsScreen(),
+                              builder: (context) => LoginScreen(),
                             ));
                       },
                       style: ElevatedButton.styleFrom(
@@ -73,6 +74,29 @@ class HomeGuestScreen extends StatelessWidget {
                         style: const TextStyle(fontSize: 16),
                       ),
                     ),
+                    ElevatedButton(
+                      onPressed: () {
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //       builder: (context) => SettingsScreen(),
+                        //     ));
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Theme.of(context).secondaryHeaderColor,
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 24, vertical: 12),
+                      ),
+                      child: Text(
+                        AppLocalizations.of(context)?.translate('setting') ??
+                            'setting',
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -80,52 +104,111 @@ class HomeGuestScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
-                AppLocalizations.of(context)
-                        ?.translate('discover_dream_villa') ??
-                    'Discover Your Dream Villa 1',
+                AppLocalizations.of(context)?.translate('discover_dream') ??
+                    'Discover Your Dream Villa',
                 style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                     ),
               ),
             ),
-            CarouselSlider(
-              options: CarouselOptions(
-                height: 200,
-                viewportFraction: 0.85,
-                enlargeCenterPage: true,
-                autoPlay: true,
-                aspectRatio: 16 / 9,
-              ),
-              items: ['assets/bg.jpg', 'assets/bg.jpg', 'assets/bg.jpg']
-                  .map((imagePath) {
-                return Builder(
-                  builder: (BuildContext context) {
-                    return GestureDetector(
-                      onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => DetailInfoGuest(),
-                          )),
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                        decoration: BoxDecoration(
+            CarouselSlider.builder(
+              itemCount: carouselItems.length,
+              itemBuilder: (context, index, realIndex) {
+                return GestureDetector(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DetailInfoGuest(),
+                    ),
+                  ),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Stack(
+                      fit: StackFit.expand,
+                      children: [
+                        // Image
+                        ClipRRect(
                           borderRadius: BorderRadius.circular(15),
-                          image: DecorationImage(
-                            image: AssetImage(imagePath),
+                          child: Image.asset(
+                            carouselItems[index]["image"]!,
                             fit: BoxFit.cover,
                           ),
                         ),
-                      ),
-                    );
-                  },
+                        // Gradient overlay for text
+                        Positioned(
+                          bottom: 0,
+                          left: 0,
+                          right: 0,
+                          child: ClipRRect(
+                            borderRadius: const BorderRadius.only(
+                              bottomLeft: Radius.circular(15),
+                              bottomRight: Radius.circular(15),
+                            ),
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 16, horizontal: 12),
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.bottomCenter,
+                                  end: Alignment.topCenter,
+                                  colors: [
+                                    Colors.black.withOpacity(0.8),
+                                    Colors.transparent,
+                                  ],
+                                ),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    carouselItems[index]["title"]!,
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 4),
+                                  Text(
+                                    carouselItems[index]["description"]!,
+                                    style: const TextStyle(
+                                      color: Colors.white70,
+                                      fontSize: 14,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 );
-              }).toList(),
+              },
+              options: CarouselOptions(
+                height: 200,
+                viewportFraction: 0.92,
+                enableInfiniteScroll: true,
+                autoPlay: true,
+                autoPlayInterval: const Duration(seconds: 3),
+                autoPlayAnimationDuration: const Duration(milliseconds: 800),
+                autoPlayCurve: Curves.fastOutSlowIn,
+                enlargeCenterPage: true,
+                enlargeFactor: 0.2,
+              ),
             ),
+            const SizedBox(height: 24),
             _buildSection(
               context,
-              'contact',
+              AppLocalizations.of(context)?.translate('contact') ?? 'Contact',
               'Contact',
               [
                 _buildInfoRow(
@@ -147,7 +230,7 @@ class HomeGuestScreen extends StatelessWidget {
             ),
             _buildSection(
               context,
-              'location',
+              AppLocalizations.of(context)?.translate('location') ?? 'location',
               'Location',
               [
                 _buildInfoRow(
@@ -159,7 +242,8 @@ class HomeGuestScreen extends StatelessWidget {
             ),
             _buildSection(
               context,
-              'description',
+              AppLocalizations.of(context)?.translate('description') ??
+                  'description',
               'Description',
               [
                 Padding(

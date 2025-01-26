@@ -271,7 +271,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       builder: (context) => HomePageMain(),
                     ),
                   ),
-                  child: Text("guest"),
+                  child: Text(
+                    AppLocalizations.of(context)?.translate('guest') ?? 'guest',
+                  ),
                 )
               ],
             ),

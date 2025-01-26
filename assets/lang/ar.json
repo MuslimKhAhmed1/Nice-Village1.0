@@ -36,8 +36,21 @@
 "guest": "ضيوف",
 "nice": "نايس",
 "village": "فيلج",
+"setting": "الإعدادات",
+"discover_dream": "اكتشف قريتك الحلم",
+"current_password": "كلمة المرور الحالية",
+"new_password": "كلمة المرور الجديدة",
+
+"enter_current_password": "أدخل كلمة المرور الحالية",
+"enter_new_password": "أدخل كلمة المرور الجديدة",
+"confirm_new_password": "تأكيد كلمة المرور الجديدة",
+
+"password_length_error": "يجب أن تكون كلمة المرور 6 أحرف على الأقل",
+"passwords_do_not_match": "كلمات المرور غير متطابقة",
+"password_changed_success": "تم تغيير كلمة المرور بنجاح",
 "login": "تسجيل الدخول",
 "discover_dream_villa": "اكتشف فيلا أحلامك",
+
 "house_number": "رقم المنزل",
 "email_username": "أدخل البريد الإلكتروني / اسم المستخدم",
 "login_success": "تم تسجيل الدخول بنجاح",
