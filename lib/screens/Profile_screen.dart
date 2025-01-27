@@ -3,6 +3,7 @@ import 'package:flutter_application_1/Localization/app_localizations.dart';
 import 'package:flutter_application_1/providers/themes.dart';
 import 'package:flutter_application_1/providers/localization.dart';
 import 'package:flutter_application_1/screens/changePasswordScreen.dart';
+import 'package:flutter_application_1/screens/guest/welcome_screen.dart';
 import 'package:provider/provider.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -114,6 +115,15 @@ class ProfilePage extends StatelessWidget {
                     'languages',
                     Icons.language,
                     onTap: () => _showLanguageDialog(context),
+                  ),
+                  _buildMenuItem(
+                    context,
+                    'guest_mode',
+                    Icons.language,
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => const WelcomeScreen())),
                   ),
                   const Spacer(),
                   _buildMenuItem(

@@ -54,7 +54,6 @@ class LanguageSelectionScreen extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Provider.of<LocaleProvider>(context, listen: false).setLocale(locale);
-        Provider.of<LanguageProvider>(context, listen: false).setLocale(locale);
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (_) => const WelcomeScreen()),
         );

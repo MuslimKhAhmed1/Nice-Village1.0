@@ -1,5 +1,6 @@
 // announcements_page.dart
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Localization/app_localizations.dart';
 
 class Announcement {
   final String title;
@@ -39,7 +40,10 @@ class AnnouncementsPage extends StatelessWidget {
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text('Announcements'),
+        title: Text(
+          AppLocalizations.of(context)?.translate('announcements') ??
+              "announcements",
+        ),
       ),
       body: ListView.builder(
         padding: const EdgeInsets.all(16),

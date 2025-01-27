@@ -19,7 +19,7 @@
     "contact": "اتصل بنا",
     "delete_message":"حذف الإشعار",
       "invalid_credentials": "بيانات الدخول غير صحيحة",
-  "invalid_house_number": "رقم المنزل غير صحيح",
+    "invalid_house_number": "رقم المنزل غير صحيح",
     "save": "حفظ",
     "cancel": "إلغاء",
     "delete": "حذف",

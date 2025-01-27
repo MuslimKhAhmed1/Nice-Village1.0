@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter_application_1/screens/guest/DetailInfoGuest_screen.dart';
+import 'package:flutter_application_1/Localization/app_localizations.dart';
+import 'package:flutter_application_1/screens/DetailInfoGuest_screen.dart';
 import 'package:flutter_application_1/screens/login_screen.dart';
 import 'package:flutter_application_1/screens/settings_screen.dart';
-import '../../localization/app_localizations.dart';
 import '../HomePageMain_screen.dart';
 
 class HomeGuestScreen extends StatelessWidget {
@@ -21,7 +21,7 @@ class HomeGuestScreen extends StatelessWidget {
             SafeArea(
               child: Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                    const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -74,35 +74,12 @@ class HomeGuestScreen extends StatelessWidget {
                         style: const TextStyle(fontSize: 16),
                       ),
                     ),
-                    ElevatedButton(
-                      onPressed: () {
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //       builder: (context) => SettingsScreen(),
-                        //     ));
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Theme.of(context).secondaryHeaderColor,
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 24, vertical: 12),
-                      ),
-                      child: Text(
-                        AppLocalizations.of(context)?.translate('setting') ??
-                            'setting',
-                        style: const TextStyle(fontSize: 16),
-                      ),
-                    ),
                   ],
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(10.0),
               child: Text(
                 AppLocalizations.of(context)?.translate('discover_dream') ??
                     'Discover Your Dream Villa',

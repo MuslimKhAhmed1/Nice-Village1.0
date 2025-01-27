@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_1/providers/localization.dart';
+import 'package:flutter_application_1/screens/guest/HomeGuest_screen.dart';
+import 'package:flutter_application_1/screens/guest/welcome_screen.dart';
+import 'package:provider/provider.dart';
 import 'languageSelectionPage.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -37,9 +41,13 @@ class _SplashScreenState extends State<SplashScreen>
     // Navigate after splash duration
     _animationController.forward();
     Future.delayed(const Duration(seconds: 3), () {
+      final languageProvider =
+          Provider.of<LocaleProvider>(context, listen: false);
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (_) => const LanguageSelectionScreen(),
+          builder: (_) => languageProvider.hasSelectedLanguage
+              ? WelcomeScreen()
+              : LanguageSelectionScreen(),
         ),
       );
     });

@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Localization/app_localizations.dart';
 import 'package:flutter_application_1/screens/guest/HomeGuest_screen.dart';
 import 'package:flutter_application_1/screens/login_screen.dart';
-import '../../localization/app_localizations.dart';
 
-class WelcomeScreen extends StatelessWidget {
+class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
 
+  @override
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +50,9 @@ class WelcomeScreen extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                     textAlign: TextAlign.center,
+                  ),
+                  SizedBox(
+                    height: 5,
                   ),
                   Center(
                     child: RichText(
@@ -90,7 +98,7 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                     child: Text(
                       AppLocalizations.of(context)?.translate('login') ??
-                          'Login1',
+                          'login',
                       style: const TextStyle(fontSize: 18),
                     ),
                   ),

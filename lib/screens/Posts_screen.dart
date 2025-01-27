@@ -1,5 +1,6 @@
 // posts_page.dart
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Localization/app_localizations.dart';
 
 class Post {
   final String username;
@@ -108,7 +109,9 @@ class _PostsPageState extends State<PostsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Posts'),
+        title: Text(
+          AppLocalizations.of(context)?.translate('posts') ?? "posts",
+        ),
       ),
       body: ListView.builder(
         padding: const EdgeInsets.all(16),

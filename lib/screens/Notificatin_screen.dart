@@ -67,7 +67,10 @@ class NotificationsPage extends StatelessWidget {
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text('Notifications'),
+        title: Text(
+          AppLocalizations.of(context)?.translate('notifications') ??
+              "notifications",
+        ),
       ),
       body: ListView.builder(
         padding: const EdgeInsets.all(16),

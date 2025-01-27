@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../localization/app_localizations.dart';
+import 'package:flutter_application_1/Localization/app_localizations.dart';
 
 class DetailInfoGuest extends StatelessWidget {
   const DetailInfoGuest({Key? key}) : super(key: key);
