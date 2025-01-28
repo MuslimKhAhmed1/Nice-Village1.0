@@ -213,7 +213,8 @@ class HomeGuestScreen extends StatelessWidget {
                 _buildInfoRow(
                   context,
                   Icons.location_on,
-                  'Erbil, Permam Road, near 120 m',
+                  AppLocalizations.of(context)?.translate('placeaddress') ??
+                      'Address',
                 ),
               ],
             ),
