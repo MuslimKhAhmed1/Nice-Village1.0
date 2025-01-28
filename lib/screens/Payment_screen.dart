@@ -103,9 +103,7 @@ class PaymentPage extends StatelessWidget {
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
         ),
-        title: Text(
-          AppLocalizations.of(context)!.translate("payment"),
-        ),
+        title: TitleText(),
       ),
       body: ListView.builder(
         padding: const EdgeInsets.all(16),
@@ -153,6 +151,19 @@ class PaymentPage extends StatelessWidget {
           );
         },
       ),
+    );
+  }
+}
+
+class TitleText extends StatelessWidget {
+  const TitleText({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      AppLocalizations.of(context)!.translate("payment"),
     );
   }
 }

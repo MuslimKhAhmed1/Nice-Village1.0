@@ -4,6 +4,7 @@ import 'package:flutter_application_1/providers/themes.dart';
 import 'package:flutter_application_1/providers/localization.dart';
 import 'package:flutter_application_1/screens/changePasswordScreen.dart';
 import 'package:flutter_application_1/screens/guest/welcome_screen.dart';
+import 'package:flutter_application_1/widgets/showDialog.dart';
 import 'package:provider/provider.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -291,45 +292,53 @@ class MyPostsPage extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         itemCount: 10,
         itemBuilder: (context, index) {
-          return Card(
-            color: theme.cardColor,
-            margin: const EdgeInsets.only(bottom: 16),
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      const CircleAvatar(
-                        backgroundImage: AssetImage('assets/avatar.png'),
-                      ),
-                      const SizedBox(width: 12),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            AppLocalizations.of(context)
-                                    ?.translate('user_name') ??
-                                'User Name',
-                            style: theme.textTheme.titleMedium,
-                          ),
-                          Text(
-                            'Dec ${20 + index}, 2024',
-                            style: theme.textTheme.bodySmall,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 12),
-                  Text(
-                    AppLocalizations.of(context)
-                            ?.translate('sample_post_content') ??
-                        'This is a sample post content. It can contain multiple lines of text and other information relevant to the post.',
-                    style: theme.textTheme.bodyMedium,
-                  ),
-                ],
+          return InkWell(
+            onLongPress: () {
+              showDialog(
+                context: context,
+                builder: (context) => DeleteDialog(),
+              );
+            },
+            child: Card(
+              color: theme.cardColor,
+              margin: const EdgeInsets.only(bottom: 16),
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        const CircleAvatar(
+                          backgroundImage: AssetImage('assets/avatar.png'),
+                        ),
+                        const SizedBox(width: 12),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              AppLocalizations.of(context)
+                                      ?.translate('user_name') ??
+                                  'User Name',
+                              style: theme.textTheme.titleMedium,
+                            ),
+                            Text(
+                              'Dec ${20 + index}, 2024',
+                              style: theme.textTheme.bodySmall,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    Text(
+                      AppLocalizations.of(context)
+                              ?.translate('sample_post_content') ??
+                          'This is a sample post content. It can contain multiple lines of text and other information relevant to the post.',
+                      style: theme.textTheme.bodyMedium,
+                    ),
+                  ],
+                ),
               ),
             ),
           );

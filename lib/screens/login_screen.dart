@@ -178,21 +178,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 40),
                 CustomTextField(
-                  hintText:
-                      AppLocalizations.of(context)?.translate('house_number') ??
-                          'House Number',
-                  controller: _houseNumberController,
-                  keyboardType: TextInputType.number,
-                  validator: (value) {
-                    if (value?.isEmpty ?? true) {
-                      return AppLocalizations.of(context)
-                              ?.translate('house_number_required') ??
-                          'House number is required';
-                    }
-                    return null;
-                  },
-                ),
-                CustomTextField(
                   hintText: AppLocalizations.of(context)
                           ?.translate('email_username') ??
                       'Enter your email / username',

@@ -92,10 +92,10 @@ class _PostsPageState extends State<PostsPage> {
                     Navigator.pop(context);
                   }
                 },
-                child: const Text('Post'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Theme.of(context).primaryColor,
                 ),
+                child: const Text('Post'),
               ),
               const SizedBox(height: 16),
             ],

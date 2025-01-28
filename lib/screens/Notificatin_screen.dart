@@ -1,5 +1,6 @@
 // notifications_page.dart
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/widgets/showDialog.dart';
 
 import '../Localization/app_localizations.dart';
 
@@ -19,43 +20,6 @@ class NotificationsPage extends StatelessWidget {
     Notification(message: 'You have to pay for the service in two days'),
     Notification(message: 'You have only two days to pay'),
   ];
-  void _showDeleteNot(BuildContext context) {
-    final theme = Theme.of(context);
-
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        backgroundColor: theme.scaffoldBackgroundColor,
-        title: Text(
-          AppLocalizations.of(context)?.translate('delete_message') ?? 'Delete',
-          style: theme.textTheme.titleLarge,
-        ),
-        content: Text(
-          AppLocalizations.of(context)?.translate('delete_message') ??
-              ' delete the notification?',
-          style: theme.textTheme.bodyMedium,
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text(
-              AppLocalizations.of(context)?.translate('cancel') ?? 'Cancel',
-              style: theme.textTheme.labelLarge,
-            ),
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Text(
-              AppLocalizations.of(context)?.translate('delete') ?? 'delete',
-              style: theme.textTheme.labelLarge?.copyWith(color: Colors.red),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 
   NotificationsPage({Key? key}) : super(key: key);
 
@@ -77,7 +41,12 @@ class NotificationsPage extends StatelessWidget {
         itemCount: notifications.length,
         itemBuilder: (context, index) {
           return InkWell(
-            onLongPress: () => _showDeleteNot(context),
+            onLongPress: () {
+              showDialog(
+                context: context,
+                builder: (context) => DeleteDialog(),
+              );
+            },
             child: Card(
               margin: const EdgeInsets.only(bottom: 16),
               child: ListTile(

@@ -1,6 +1,7 @@
 // announcements_page.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Localization/app_localizations.dart';
+import 'package:flutter_application_1/widgets/showDialog.dart';
 
 class Announcement {
   final String title;
@@ -49,38 +50,46 @@ class AnnouncementsPage extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         itemCount: announcements.length,
         itemBuilder: (context, index) {
-          return Card(
-            margin: const EdgeInsets.only(bottom: 16),
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      const Icon(Icons.notification_important,
-                          color: Color(0xFFDEA30D)),
-                      const SizedBox(width: 8),
-                      Text(
-                        announcements[index].title,
-                        style: TextStyle(
-                          color: Theme.of(context).primaryColor,
-                          fontWeight: FontWeight.bold,
+          return InkWell(
+            onLongPress: () {
+              showDialog(
+                context: context,
+                builder: (context) => DeleteDialog(),
+              );
+            },
+            child: Card(
+              margin: const EdgeInsets.only(bottom: 16),
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        const Icon(Icons.notification_important,
+                            color: Color(0xFFDEA30D)),
+                        const SizedBox(width: 8),
+                        Text(
+                          announcements[index].title,
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      const Spacer(),
-                      Text(
-                        announcements[index].date,
-                        style: TextStyle(color: Colors.black54),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    announcements[index].content,
-                    style: TextStyle(color: Colors.black87),
-                  ),
-                ],
+                        const Spacer(),
+                        Text(
+                          announcements[index].date,
+                          style: TextStyle(color: Colors.black54),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      announcements[index].content,
+                      style: TextStyle(color: Colors.black87),
+                    ),
+                  ],
+                ),
               ),
             ),
           );
